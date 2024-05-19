@@ -1,0 +1,3 @@
+<?php
+echo "Giáo viên";
+?>
