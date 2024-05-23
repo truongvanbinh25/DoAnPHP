@@ -1,5 +1,5 @@
 <?php
-include 'connect.php';
+include 'D:\CNTT\Thuc_hanh\LT_MaNguonMo\DoAn\skydash\src\ConnectSQL\connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute()) {
       echo "<script>
               alert('Đăng ký thành công!');
-              window.location.href='login.php';
+              window.location.href='\skydash\src\login.php';
             </script>";
     } else {
       echo "<script>
@@ -66,13 +66,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <h6 class="font-weight-light">Đăng ký dễ dàng, chỉ tốn vài bước!</h6>
               <form class="pt-3" method="post" action="">
                 <div class="form-group">
-                  <input type="text" name="username" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Tên đăng nhập">
+                  <input type="text" name="username" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Tên đăng nhập" required>
                 </div>
                 <div class="form-group">
-                  <input type="password" name="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Mật khẩu">
+                  <input type="password" name="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Mật khẩu" required>
                 </div>
                 <div class="form-group">
-                  <input type="email" name="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email">
+                  <input type="email" name="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email" required>
                 </div>
                 <div class="form-group">
                   <select class="form-control form-control-lg" id="exampleFormControlSelect2" name="role">

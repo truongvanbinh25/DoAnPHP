@@ -6,14 +6,14 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 echo $_SESSION['role'];
-if ($_SESSION['role'] == 'teacher') {
-    header("Location: dashboardGV.php");
+if ($_SESSION['role'] == 'GiaoVien') {
+    header("Location: \skydash\src\GiaoVien\dashboardGV.php");
     exit();
-} else if ($_SESSION['role'] == 'student') {
-    header("Location: dashboardSV.php");
+} else if ($_SESSION['role'] == 'SinhVien') {
+    header("Location: \skydash\src\SinhVien\dashboardSV.php");
     exit();
 } else if ($_SESSION['role'] == 'admin') {
-    header("Location: dashboardAdmin.php");
+    header("Location: \skydash\src\Admin\dashboardAdmin.php");
     exit();
 }
  else {

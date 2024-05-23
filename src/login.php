@@ -1,5 +1,5 @@
 <?php
-include "connect.php";
+include 'D:\CNTT\Thuc_hanh\LT_MaNguonMo\DoAn\skydash\src\ConnectSQL\connect.php';
 
 session_start();
 
