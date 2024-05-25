@@ -6,20 +6,29 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username_input = $_POST['username'] ?? '';
     $password_input = $_POST['password'] ?? '';
+    $role_input = $_POST['role'] ?? '';
 
-    $sql = "SELECT user_id, password_hash, role FROM users WHERE username = :username";
+    if($role_input == "SinhVien")
+    {
+      $sql = "SELECT password_hash, role FROM userssinhvien WHERE username = :username";
+    }
+    else if($role_input == "GiaoVien")
+    {
+      $sql = "SELECT password_hash, role FROM usersgiaovien WHERE username = :username";
+    }
+
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':username', $username_input, PDO::PARAM_STR);
     $stmt->execute();
 
     // Fetch the result
     if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $user_id = $row['user_id'];
+        $username = $row['username'];
         $password = $row['password_hash'];
         $role = $row['role'];
 
-        if ($password == $password_input) {
-            $_SESSION['user_id'] = $user_id;
+        if ($password == $password_input && $role == $role_input) {
+            $_SESSION['username'] = $username;
             $_SESSION['username'] = $username_input;
             $_SESSION['role'] = $role;
 
@@ -77,20 +86,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form-group">
                   <input type="password" class="form-control form-control-lg" name="password" id="exampleInputPassword1" placeholder="Password" required>
                 </div>
+                <div class="form-group">
+                  <select class="form-control form-control-lg" id="exampleFormControlSelect2" name="role">
+                    <option value="SinhVien">Sinh viên</option>
+                    <option value="GiaoVien">Giáo viên</option>
+                    <option value="admin">Quản trị viên</option>
+                  </select>
+                </div>
                 <div class="mt-3">
                   <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="Đăng nhập">
                 </div>
                 <div class="my-2 d-flex justify-content-between align-items-center">
-                  <div class="form-check">
-                    <label class="form-check-label text-muted">
-                      <input type="checkbox" class="form-check-input">
-                      Giữ tôi đăng nhập
-                    </label>
-                  </div>
                   <a href="#" class="auth-link text-black">Quên mật khẩu?</a>
-                </div>
-                <div class="text-center mt-4 font-weight-light">
-                  Không có tài khoản? <a href="register.html" class="text-primary">Đăng ký</a>
                 </div>
               </form>
             </div>

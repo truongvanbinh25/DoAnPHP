@@ -2,10 +2,10 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+    header("Location: skydash\src\login.php");
     exit();
 }
-echo $_SESSION['role'];
+
 if ($_SESSION['role'] == 'GiaoVien') {
     header("Location: \skydash\src\GiaoVien\dashboardGV.php");
     exit();

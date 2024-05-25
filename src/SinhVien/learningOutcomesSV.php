@@ -3,28 +3,24 @@ session_start();
 include 'D:\CNTT\Thuc_hanh\LT_MaNguonMo\DoAn\skydash\src\ConnectSQL\connect.php';
 
 // Kiểm tra xem user_id có trong session không
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['username'])) {
     // Nếu không có, chuyển hướng đến trang đăng nhập
     header("Location: login.php");
     exit();
 }
 
 // Lấy user_id từ session
-$user_id = $_SESSION['user_id'];
+$username = $_SESSION['username'];
 
 //Truy vấn thông tin sinh viên dựa trên user_id
-$sql = "SELECT Count(*) FROM diem WHERE MaSV = :id";
+$sql = "SELECT MonHoc.MaMH, MonHoc.TenMH, MonHoc.SoTinChi, MonHoc.LoaiMonHoc, Diem.DiemTieuLuan, Diem.DiemThi, Diem.DiemThi >= 5 AS Dat 
+        FROM MonHoc
+        JOIN Diem ON Diem.MaMH = MonHoc.MaMH
+        WHERE Diem.MaSV = :username";
 $stm = $conn->prepare($sql);
-$stm->bindParam(':id', $user_id);
+$stm->bindParam(':username', $username);
 $stm->execute();
-$data = $stm->fetch(PDO::FETCH_OBJ);
-$n = $data->n;
-
-$sql2 = "SELECT Count(*) FROM diem WHERE MaSV = ?";
-$arr = ["$user_id"];
-$stm2 = $conn->prepare($sql2);
-$stm2->execute($arr);
-$data2 = $stm2->fetch(PDO::FETCH_OBJ);
+$data = $stm->fetchAll(PDO::FETCH_OBJ);
 
 // Đóng kết nối
 $stm = null;
@@ -229,56 +225,23 @@ $conn = null;
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><?php  ?>  </td>
-                  <td>tên</td>
-                  <td>lớp</td>
-                  <td>stc</td>
-                  <td>lmh</td>
-                  <td>điểm tl</td>
-                  <td>điểm thi</td>
-                  <td><label class="badge badge-danger">Không đạt</label></td>
-                </tr>
-                <tr>
-                  <td>mã</td>
-                  <td>tên</td>
-                  <td>lớp</td>
-                  <td>stc</td>
-                  <td>lmh</td>
-                  <td>điểm tl</td>
-                  <td>điểm thi</td>
-                  <td><label class="badge badge-success">Đạt</label></td>
-                </tr>
-                <tr>
-                  <td>mã</td>
-                  <td>tên</td>
-                  <td>lớp</td>
-                  <td>stc</td>
-                  <td>lmh</td>
-                  <td>điểm tl</td>
-                  <td>điểm thi</td>
-                  <td><label class="badge badge-danger">Pending</label></td>
-                </tr>
-                <tr>
-                  <td>mã</td>
-                  <td>tên</td>
-                  <td>lớp</td>
-                  <td>stc</td>
-                  <td>lmh</td>
-                  <td>điểm tl</td>
-                  <td>điểm thi</td>
-                  <td><label class="badge badge-danger">Pending</label></td>
-                </tr>
-                <tr>
-                  <td>mã</td>
-                  <td>tên</td>
-                  <td>lớp</td>
-                  <td>stc</td>
-                  <td>lmh</td>
-                  <td>điểm tl</td>
-                  <td>điểm thi</td>
-                  <td><label class="badge badge-danger">Pending</label></td>
-                </tr>
+                <?php
+                  foreach($data as $item)
+                  {
+                    ?>
+                      <tr>
+                        <td><?php echo $item->MaMH ?> </td>
+                        <td><?php echo $item->TenMH ?></td>
+                        <td>lớp</td>
+                        <td><?php echo $item->SoTinChi ?></td>
+                        <td><?php echo $item->LoaiMonHoc ?></td>
+                        <td><?php echo $item->DiemTieuLuan ?></td>
+                        <td><?php echo $item->DiemThi ?></td>
+                        <td><label class="badge badge-danger">Pending</label></td>
+                      </tr>
+                      <?php
+                  }
+                ?>
               </tbody>
             </table>
           </div>

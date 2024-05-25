@@ -3,19 +3,19 @@ session_start();
 include 'D:\CNTT\Thuc_hanh\LT_MaNguonMo\DoAn\skydash\src\ConnectSQL\connect.php';
 
 // Kiểm tra xem user_id có trong session không
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['username'])) {
     // Nếu không có, chuyển hướng đến trang đăng nhập
     header("Location: login.php");
     exit();
 }
 
 // Lấy user_id từ session
-$user_id = $_SESSION['user_id'];
+$username = $_SESSION['username'];
 
 // Truy vấn thông tin sinh viên dựa trên user_id
-$sql = "SELECT MaSV, TenSV, GioiTinh, QueQuan FROM SinhVien WHERE user_id = :id";
+$sql = "SELECT MaSV, TenSV, GioiTinh, QueQuan FROM SinhVien WHERE MaSV = :username";
 $stm = $conn->prepare($sql);
-$stm->bindParam(':id', $user_id);
+$stm->bindParam(':username', $username);
 $stm->execute();
 
 $data = $stm->fetch(PDO::FETCH_OBJ);
