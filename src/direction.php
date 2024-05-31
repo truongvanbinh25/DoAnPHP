@@ -12,7 +12,7 @@ if ($_SESSION['role'] == 'GiaoVien') {
 } else if ($_SESSION['role'] == 'SinhVien') {
     header("Location: \skydash\src\SinhVien\dashboardSV.php");
     exit();
-} else if ($_SESSION['role'] == 'admin') {
+} else if ($_SESSION['role'] == 'Admin') {
     header("Location: \skydash\src\Admin\dashboardAdmin.php");
     exit();
 }

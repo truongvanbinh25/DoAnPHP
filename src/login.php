@@ -16,6 +16,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     {
       $sql = "SELECT password_hash, role FROM usersgiaovien WHERE username = :username";
     }
+    else if($role_input == "Admin")
+    {
+      $sql = "SELECT password_hash, role FROM usersadmin WHERE username = :username";
+    }
+    else
+    {
+      echo "<script>alert('Vui lòng chọn quyền!');</script>";
+      exit();
+    }
 
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':username', $username_input, PDO::PARAM_STR);
@@ -23,8 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Fetch the result
     if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $username = $row['username'];
-        $password = $row['password_hash'];
+        $username = $row['username']??'';
+        $password = $row['password_hash']??'';
         $role = $row['role'];
 
         if ($password == $password_input && $role == $role_input) {
@@ -38,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!');</script>";
         }
     } else {
-        echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!');</script>";
+      echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!');</script>";
     }
 
     // Close the connection
@@ -87,10 +96,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <input type="password" class="form-control form-control-lg" name="password" id="exampleInputPassword1" placeholder="Password" required>
                 </div>
                 <div class="form-group">
-                  <select class="form-control form-control-lg" id="exampleFormControlSelect2" name="role">
+                  <select class="form-control form-control-lg" id="exampleFormControlSelect" name="role">
+                    <option value="">Bạn là: </option>
                     <option value="SinhVien">Sinh viên</option>
                     <option value="GiaoVien">Giáo viên</option>
-                    <option value="admin">Quản trị viên</option>
+                    <option value="Admin">Quản trị viên</option>
                   </select>
                 </div>
                 <div class="mt-3">
