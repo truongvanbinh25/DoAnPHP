@@ -25,7 +25,7 @@ $stm = null;
 $conn = null;
 ?>
 
-<?php include "D:\CNTT\Thuc_hanh\LT_MaNguonMo\DoAn\skydash\src\Shared\header.php"; ?>
+<?php include __DIR__ . "/../Shared/header.php"; ?>
 <!-- partial -->
 <div class="main-panel">
 <div class="content-wrapper">
@@ -68,32 +68,26 @@ $conn = null;
           </div>
         </div>
 
-      <div class="row">
         <!-- Box 3 -->
-        <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
-          <div class="card card-light-blue">
-            <div class="card-body">
-              <p class="mb-4">Number of Meetings</p>
-              <p class="fs-30 mb-2">34040</p>
-              <p>2.00% (30 days)</p>
-            </div>
+        <div class="col-md-6 mb-4 stretch-card transparent">
+          <div class="card card-tale">
+            <a class="card-body" style="text-decoration: none; color:white" href="#">
+              <p class="mb-4"></p>
+            </a>
           </div>
         </div>
 
         <!-- Box 4 -->
-        <div class="col-md-6 stretch-card transparent">
-          <div class="card card-light-danger">
-            <div class="card-body">
-              <p class="mb-4">Number of Clients</p>
-              <p class="fs-30 mb-2">47033</p>
-              <p>0.22% (30 days)</p>
-            </div>
+        <div class="col-md-6 mb-4 stretch-card transparent">
+          <div class="card card-tale">
+            <a class="card-body" style="text-decoration: none; color:white" href="#">
+              <p class="mb-4"></p>
+            </a>
           </div>
         </div>
-      </div>
     </div>
   </div>
 </div>
 
-<?php include 'D:\CNTT\Thuc_hanh\LT_MaNguonMo\DoAn\skydash\src\Shared\footer.php'; ?>
+<?php include __DIR__ . "/../Shared/footer.php"; ?>
 

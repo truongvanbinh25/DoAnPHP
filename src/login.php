@@ -1,5 +1,5 @@
 <?php
-include 'D:\CNTT\Thuc_hanh\LT_MaNguonMo\DoAn\skydash\src\ConnectSQL\connect.php';
+include __DIR__ . "\ConnectSQL\connect.php";
 
 session_start();
 
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     else
     {
-      echo "<script>alert('Vui lòng chọn quyền!');</script>";
+      echo "<script>alert('Vui lòng chọn quyền!'); window.location.href = 'login.php'; </script>";
       exit();
     }
 
