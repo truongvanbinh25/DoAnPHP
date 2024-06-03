@@ -25,8 +25,8 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="/skydash/images/logo.svg" class="mr-2" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="/skydash/images/logo-mini.svg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo mr-5" href="\skydash\src\direction.php"><img src="/skydash/images/logo.svg" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="\skydash\src\direction.php"><img src="/skydash/images/logo-mini.svg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -125,7 +125,7 @@
             </a>
             <div class="collapse" id="thong-tin-chung">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="\skydash\src\SinhVien\infomationSV.php">Thông tin học viên</a></li>
+                <li class="nav-item"> <a class="nav-link" href="\skydash\src\GiaoVien\infomationGV.php">Thông tin giáo viên</a></li>
               </ul>
             </div>
           </li>
@@ -138,39 +138,10 @@
             </a>
             <div class="collapse" id="hoc-tap">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="\skydash\src\SinhVien\learningOutcomesSV.php">Kết quả học tập</a></li>
-                <li class="nav-item"> <a class="nav-link" href="#">Lịch theo tuần</a></li>
-                <li class="nav-item"> <a class="nav-link" href="#">Lịch theo tiến độ</a></li>
-              </ul>
-            </div>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#dang-ky-hoc-phan" aria-expanded="false" aria-controls="dang-ky-hoc-phan">
-              <i class="icon-grid-2 menu-icon"></i>
-              <span class="menu-title">Đăng ký học phần</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="dang-ky-hoc-phan">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="#">Chương trình khung</a></li>
-                <li class="nav-item"> <a class="nav-link" href="#">Đăng ký học phần</a></li>
+                <li class="nav-item"> <a class="nav-link" href="\skydash\src\GiaoVien\enterCourseGrades.php">Nhập điểm</a></li>
               </ul>
             </div>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#hoc-phi" aria-expanded="false" aria-controls="hoc-phi">
-              <i class="icon-contract menu-icon"></i>
-              <span class="menu-title">Học phí</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="hoc-phi">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="#">Tra cứu công nợ</a></li>
-                <li class="nav-item"> <a class="nav-link" href="#">Thanh toán trực tuyến</a></li>
-              </ul>
-            </div>
-          </li>
         </ul>
       </nav>

@@ -27,7 +27,7 @@ $stm = null;
 $conn = null;
 ?>
 
-<?php include 'D:\CNTT\Thuc_hanh\LT_MaNguonMo\DoAn\skydash\src\Shared\header.php'; ?>
+<?php include __DIR__ . "/../Shared/headerSV.php"; ?>
       <!-- partial -->
       <div class="container mt-5">
         <div class="row">

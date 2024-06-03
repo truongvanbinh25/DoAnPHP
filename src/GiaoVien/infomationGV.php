@@ -12,7 +12,7 @@ if (!isset($_SESSION['username'])) {
 // Lấy user_id từ session
 $username = $_SESSION['username'];
 
-// Truy vấn thông tin sinh viên dựa trên user_id
+// Truy vấn thông tin giáo viên dựa trên user_id
 $sql = "SELECT GiaoVien.MaGiaoVien, GiaoVien.TenGiaoVien, GiaoVien.DiaChi, GiaoVien.DienThoai, Khoa.TenKhoa
         FROM GiaoVien, Khoa 
         WHERE GiaoVien.MaKhoa = Khoa.MaKhoa and GiaoVien.MaGiaoVien = :username";
@@ -21,7 +21,7 @@ $stm->bindParam(':username', $username);
 $stm->execute();
 $data = $stm->fetch(PDO::FETCH_OBJ);
 
-// Truy vấn thông tin sinh viên dựa trên user_id
+// Truy vấn thông tin lớp học
 $sql2 = "SELECT MonHoc.MaMH, MonHoc.TenMH, Lop.TenLop
         FROM GiaoVien, Lop, MonHoc 
         WHERE GiaoVien.MaGiaoVien = :username
@@ -36,7 +36,7 @@ $stm = null;
 $conn = null;
 ?>
 
-<?php include 'D:\CNTT\Thuc_hanh\LT_MaNguonMo\DoAn\skydash\src\Shared\header.php'; ?>
+<?php include __DIR__ . "/../Shared/headerGV.php"; ?>
       <!-- partial -->
       <div class="container mt-5">
         <img src="\skydash\images\faces\face1.jpg" alt="Avatar của sinh viên" class="img-fluid rounded-circle mb-3">

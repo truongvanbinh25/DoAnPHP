@@ -25,7 +25,7 @@ $stm = null;
 $conn = null;
 ?>
 
-<?php include __DIR__ . "/../Shared/header.php"; ?>
+<?php include __DIR__ . "/../Shared/headerGV.php"; ?>
 <!-- partial -->
 <div class="main-panel">
 <div class="content-wrapper">

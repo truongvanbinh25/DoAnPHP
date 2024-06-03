@@ -23,7 +23,7 @@ $data2 = $stm2->fetchAll(PDO::FETCH_OBJ);
 
 $stm2 = null;
 ?>
-<?php include 'D:\CNTT\Thuc_hanh\LT_MaNguonMo\DoAn\skydash\src\Shared\header.php'; ?>
+<?php include __DIR__ . "/../Shared/headerSV.php"; ?>
       <!-- partial -->
       <div class="card">
         <div class="card-body">
