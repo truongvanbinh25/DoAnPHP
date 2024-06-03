@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'D:\CNTT\Thuc_hanh\LT_MaNguonMo\DoAn\skydash\src\ConnectSQL\connect.php';
+include __DIR__ . "/../ConnectSQL/connect.php";
 
 // Kiểm tra xem user_id có trong session không
 if (!isset($_SESSION['username'])) {
@@ -13,12 +13,23 @@ if (!isset($_SESSION['username'])) {
 $username = $_SESSION['username'];
 
 // Truy vấn thông tin sinh viên dựa trên user_id
-$sql = "SELECT MaSV, TenSV, GioiTinh, QueQuan FROM SinhVien WHERE MaSV = :username";
+$sql = "SELECT MaSV, TenSV, GioiTinh, QueQuan, TrangThai FROM SinhVien WHERE MaSV = :username";
 $stm = $conn->prepare($sql);
 $stm->bindParam(':username', $username);
 $stm->execute();
 
 $data = $stm->fetch(PDO::FETCH_OBJ);
+
+if($data->TrangThai != "Đang học")
+{
+  $status = addslashes($data->TrangThai);  // addslashes giúp thoát các ký tự đặc biệt
+  echo <<<EOT
+  <script>
+      alert('Sinh viên đã $status !');
+      window.location.href = '../login.php';  // Đường dẫn tương đối chính xác
+  </script>
+  EOT;
+}
 
 // Đóng kết nối
 $stm = null;

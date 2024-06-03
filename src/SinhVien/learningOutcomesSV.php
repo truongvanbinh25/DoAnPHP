@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'D:\CNTT\Thuc_hanh\LT_MaNguonMo\DoAn\skydash\src\ConnectSQL\connect.php';
+include __DIR__ . "/../ConnectSQL/connect.php";
 
 // Kiểm tra xem user_id có trong session không
 if (!isset($_SESSION['username'])) {
