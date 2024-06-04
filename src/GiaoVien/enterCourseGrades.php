@@ -105,7 +105,7 @@ $conn = null;
   </div>
   <!-- container-scroller -->
 
-<?php include 'D:\CNTT\Thuc_hanh\LT_MaNguonMo\DoAn\skydash\src\Shared\footer.php';
+  <?php include __DIR__ . "/../Shared/footer.php"; ?>
 
 
 
