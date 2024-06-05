@@ -53,8 +53,8 @@ $conn = null;
         <!-- Box 1 -->
         <div class="col-md-6 mb-4 stretch-card transparent">
           <div class="card card-tale">
-            <a class="card-body" style="text-decoration: none; color:white" href="infomationGV.php">
-              <p class="mb-4">Thêm Sinh Viên</p>
+            <a class="card-body" style="text-decoration: none; color:white" href="studentList.php">
+              <p class="mb-4">Sinh Viên</p>
             </a>
           </div>
         </div>
