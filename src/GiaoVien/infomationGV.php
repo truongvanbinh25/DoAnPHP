@@ -97,6 +97,10 @@ $conn = null;
   </div>
   <!-- container-scroller -->
 
+<<<<<<< HEAD
 <?php include __DIR__ . "/../Shared/footer.php"; ?>
+=======
+  <?php include __DIR__ . "/../Shared/footer.php"; ?>
+>>>>>>> 2be9912e86d9bb1195d23ebae33ea0371c1241cb
 
 

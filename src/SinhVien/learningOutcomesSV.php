@@ -112,6 +112,6 @@ $stm2 = null;
     </div>  
     <!-- page-body-wrapper ends -->
   </div>
-  <?php include 'D:\CNTT\Thuc_hanh\LT_MaNguonMo\DoAn\skydash\src\Shared\footer.php'; ?>
+  <?php include __DIR__ . "/../Shared/footer.php"; ?>
 
 
