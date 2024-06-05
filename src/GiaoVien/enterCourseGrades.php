@@ -12,7 +12,7 @@ if (!isset($_SESSION['username'])) {
 // Lấy user_id từ session
 $username = $_SESSION['username'];
 
-//Lấy danh sách lớp
+// Lấy danh sách lớp
 $sql = "SELECT Lop.MaLop, Lop.TenLop
         FROM GiaoVien, Lop
         WHERE GiaoVien.MaGiaoVien = :username
@@ -36,6 +36,13 @@ if ($selectedClass) {
     $stm2->bindParam(':selectedClass', $selectedClass);
     $stm2->execute();
     $students = $stm2->fetchAll(PDO::FETCH_OBJ);
+}
+
+// Kiểm tra nếu có thông báo thành công trong session
+$grades_saved = isset($_SESSION['grades_saved']) ? $_SESSION['grades_saved'] : false;
+if ($grades_saved) {
+    // Xóa thông báo thành công để không hiển thị lại khi refresh trang
+    unset($_SESSION['grades_saved']);
 }
 
 // Đóng kết nối
@@ -73,7 +80,7 @@ $conn = null;
                             <th scope="col">Mã sinh viên</th>
                             <th scope="col">Tên sinh viên</th>
                             <th scope="col">Điểm tiểu luận</th>
-                            <th scope="col">Điểm tiểu thi</th>
+                            <th scope="col">Điểm thi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,10 +91,10 @@ $conn = null;
                                 <td><?php echo $student->MaSV; ?></td>
                                 <td><?php echo $student->TenSV; ?></td>
                                 <td>
-                                    <input type="number" name="grades[<?php echo $student->MaSV; ?>]" value="<?php echo htmlspecialchars($student->Diem); ?>" step="0.1" min="0" max="10" class="form-control">
+                                    <input type="number" name="grades[<?php echo $student->MaSV; ?>][DiemTieuLuan]" step="0.1" min="0" max="10" class="form-control">
                                 </td>
                                 <td>
-                                    <input type="number" name="grades[<?php echo $student->MaSV; ?>]" value="<?php echo htmlspecialchars($student->Diem); ?>" step="0.1" min="0" max="10" class="form-control">
+                                    <input type="number" name="grades[<?php echo $student->MaSV; ?>][DiemThi]" step="0.1" min="0" max="10" class="form-control">
                                 </td>
                             </tr>
                             <?php
@@ -97,6 +104,17 @@ $conn = null;
                 </table>
                 <button type="submit" class="btn btn-primary">Lưu điểm</button>
             </form>
+            <div>
+                <form action="uploadGrades.php" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="file">Chọn Excel file:</label>
+                        <input type="file" name="file" id="file" class="form-control" accept=".xls,.xlsx" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Tải lên</button>
+                </form>
+            </div>
+            <!-- Form for uploading Excel file -->
+            
         <?php endif; ?>
       </div>
       <!-- main-panel ends -->
@@ -105,8 +123,11 @@ $conn = null;
   </div>
   <!-- container-scroller -->
 
-<?php include 'D:\CNTT\Thuc_hanh\LT_MaNguonMo\DoAn\skydash\src\Shared\footer.php';
+<?php include __DIR__ . '/../Shared/footer.php'; ?>
 
-
-
-
+<!-- Add JavaScript for Popup Notification -->
+<?php if ($grades_saved): ?>
+<script>
+    alert("Điểm đã được lưu thành công!");
+</script>
+<?php endif; ?>
