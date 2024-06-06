@@ -67,6 +67,24 @@ $conn = null;
             </a>
           </div>
         </div>
+
+        <!-- Box 3 -->
+        <div class="col-md-6 mb-4 stretch-card transparent">
+          <div class="card card-tale">
+            <a class="card-body" style="text-decoration: none; color:white" href="dashboardMonHoc.php">
+              <p class="mb-4">Môn học</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- Box 3 -->
+        <div class="col-md-6 mb-4 stretch-card transparent">
+          <div class="card card-tale">
+            <a class="card-body" style="text-decoration: none; color:white" href="dashboardLop.php">
+              <p class="mb-4">Lớp</p>
+            </a>
+          </div>
+        </div>
     </div>
   </div>
 </div>
